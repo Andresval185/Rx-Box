@@ -1,3 +1,4 @@
+import CategoryBadge from './CategoryBadge.jsx'
 import './ClassCard.css'
 
 export default function ClassCard({
@@ -16,7 +17,10 @@ export default function ClassCard({
     <div className={`class-card${isReserved ? ' reserved' : ''}`}>
       <div className="class-card-time">{classInfo.time}</div>
       <div className="class-card-body">
-        <h3>{classInfo.wodName}</h3>
+        <div className="class-card-title-row">
+          <CategoryBadge category={classInfo.category} />
+          <h3>{classInfo.wodName}</h3>
+        </div>
         <p className="class-card-coach">{classInfo.coach}</p>
       </div>
       <div className="class-card-side">

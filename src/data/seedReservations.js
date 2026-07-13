@@ -3,8 +3,8 @@
 // every athlete to check in manually through the UI.
 export const seedReservations = [
   {
-    id: 'c1-a2',
-    classId: 'c1',
+    id: 'mon-2-a2',
+    classId: 'mon-2',
     athleteId: 'a2',
     checkIn: {
       feeling: 'good',
@@ -16,8 +16,8 @@ export const seedReservations = [
     },
   },
   {
-    id: 'c1-a3',
-    classId: 'c1',
+    id: 'mon-2-a3',
+    classId: 'mon-2',
     athleteId: 'a3',
     checkIn: {
       feeling: 'tired',
@@ -29,8 +29,8 @@ export const seedReservations = [
     },
   },
   {
-    id: 'c2-a4',
-    classId: 'c2',
+    id: 'mon-5-a4',
+    classId: 'mon-5',
     athleteId: 'a4',
     checkIn: {
       feeling: 'rough',
@@ -42,8 +42,8 @@ export const seedReservations = [
     },
   },
   {
-    id: 'c5-a2',
-    classId: 'c5',
+    id: 'tue-2-a2',
+    classId: 'tue-2',
     athleteId: 'a2',
     checkIn: null,
   },

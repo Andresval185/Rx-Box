@@ -3,6 +3,7 @@ import { useAppData } from '../context/AppDataContext.jsx'
 import { days } from '../data/classes.js'
 import { getWellnessStatus, getInjuryAlertZones } from '../utils/wellness.js'
 import AthleteWellnessCard from '../components/AthleteWellnessCard.jsx'
+import CategoryBadge from '../components/CategoryBadge.jsx'
 import './CoachView.css'
 
 export default function CoachView() {
@@ -57,35 +58,36 @@ export default function CoachView() {
       <div className="coach-class-list">
         {classesForDay.map((classInfo) => {
           const roster = reservations.filter((r) => r.classId === classInfo.id)
+          if (roster.length === 0) return null
           return (
             <section key={classInfo.id} className="coach-class-block">
               <div className="coach-class-heading">
+                <CategoryBadge category={classInfo.category} />
                 <h2>
                   {classInfo.time} · {classInfo.wodName}
                 </h2>
                 <span className="coach-class-coach">{classInfo.coach}</span>
               </div>
 
-              {roster.length === 0 ? (
-                <p className="coach-empty-roster">No reservations yet.</p>
-              ) : (
-                <div className="wellness-card-grid">
-                  {roster.map((r) => {
-                    const athlete = athletes.find((a) => a.id === r.athleteId)
-                    return (
-                      <AthleteWellnessCard
-                        key={r.id}
-                        athleteName={athlete?.name ?? 'Unknown athlete'}
-                        checkIn={r.checkIn}
-                        classInfo={classInfo}
-                      />
-                    )
-                  })}
-                </div>
-              )}
+              <div className="wellness-card-grid">
+                {roster.map((r) => {
+                  const athlete = athletes.find((a) => a.id === r.athleteId)
+                  return (
+                    <AthleteWellnessCard
+                      key={r.id}
+                      athleteName={athlete?.name ?? 'Unknown athlete'}
+                      checkIn={r.checkIn}
+                      classInfo={classInfo}
+                    />
+                  )
+                })}
+              </div>
             </section>
           )
         })}
+        {classesForDay.every((c) => reservations.filter((r) => r.classId === c.id).length === 0) && (
+          <p className="coach-empty-roster">No reservations yet for {activeDay}.</p>
+        )}
       </div>
     </div>
   )
