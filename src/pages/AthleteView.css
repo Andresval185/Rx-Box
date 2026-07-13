@@ -1,0 +1,37 @@
+.athlete-view-subtitle {
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+.day-tabs {
+  display: flex;
+  gap: 8px;
+  margin: 24px 0 16px;
+  flex-wrap: wrap;
+}
+
+.day-tab {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.day-tab:hover {
+  color: var(--text);
+}
+
+.day-tab.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.class-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
