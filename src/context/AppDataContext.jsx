@@ -24,6 +24,16 @@ export function AppDataProvider({ children }) {
     )
   }
 
+  function submitCheckIn(classId, checkInData) {
+    setReservations((prev) =>
+      prev.map((r) =>
+        r.classId === classId && r.athleteId === currentAthleteId
+          ? { ...r, checkIn: { ...checkInData, submittedAt: new Date().toISOString() } }
+          : r,
+      ),
+    )
+  }
+
   const value = {
     athletes,
     currentAthlete,
@@ -31,6 +41,7 @@ export function AppDataProvider({ children }) {
     reservations,
     reserveClass,
     cancelReservation,
+    submitCheckIn,
   }
 
   return <AppDataContext.Provider value={value}>{children}</AppDataContext.Provider>

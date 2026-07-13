@@ -9,15 +9,14 @@ import './AthleteView.css'
 export default function AthleteView() {
   const [activeDay, setActiveDay] = useState(days[0])
   const [checkInClassId, setCheckInClassId] = useState(null)
-  const [checkedInClassIds, setCheckedInClassIds] = useState([])
-  const { classes, reservations, reserveClass, cancelReservation, currentAthlete } = useAppData()
+  const { classes, reservations, reserveClass, cancelReservation, submitCheckIn, currentAthlete } =
+    useAppData()
 
   const classesForDay = classes.filter((c) => c.day === activeDay)
   const checkInClass = classes.find((c) => c.id === checkInClassId)
 
   function handleCheckInSubmit(checkInData) {
-    console.log('Check-in submitted (not yet persisted):', checkInClassId, checkInData)
-    setCheckedInClassIds((prev) => [...prev, checkInClassId])
+    submitCheckIn(checkInClassId, checkInData)
   }
 
   return (
@@ -43,7 +42,7 @@ export default function AthleteView() {
       <div className="class-list">
         {classesForDay.map((classInfo) => {
           const spotsTaken = reservations.filter((r) => r.classId === classInfo.id).length
-          const isReserved = reservations.some(
+          const myReservation = reservations.find(
             (r) => r.classId === classInfo.id && r.athleteId === currentAthlete.id,
           )
           return (
@@ -51,8 +50,8 @@ export default function AthleteView() {
               key={classInfo.id}
               classInfo={classInfo}
               spotsTaken={spotsTaken}
-              isReserved={isReserved}
-              hasCheckedIn={checkedInClassIds.includes(classInfo.id)}
+              isReserved={Boolean(myReservation)}
+              hasCheckedIn={Boolean(myReservation?.checkIn)}
               onReserve={() => reserveClass(classInfo.id)}
               onCancel={() => cancelReservation(classInfo.id)}
               onCheckIn={() => setCheckInClassId(classInfo.id)}
