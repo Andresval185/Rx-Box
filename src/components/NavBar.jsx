@@ -20,6 +20,12 @@ export default function NavBar() {
         >
           Coach
         </NavLink>
+        <NavLink
+          to="/nutrition"
+          className={({ isActive }) => `navbar-link${isActive ? ' active' : ''}`}
+        >
+          Nutrition
+        </NavLink>
       </nav>
     </header>
   )

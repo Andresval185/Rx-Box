@@ -3,6 +3,7 @@ import { AppDataProvider } from './context/AppDataContext.jsx'
 import NavBar from './components/NavBar.jsx'
 import AthleteView from './pages/AthleteView.jsx'
 import CoachView from './pages/CoachView.jsx'
+import NutritionView from './pages/NutritionView.jsx'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
               <Route path="/" element={<Navigate to="/athlete" replace />} />
               <Route path="/athlete" element={<AthleteView />} />
               <Route path="/coach" element={<CoachView />} />
+              <Route path="/nutrition" element={<NutritionView />} />
             </Routes>
           </main>
         </div>
