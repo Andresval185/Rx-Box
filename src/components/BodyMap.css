@@ -1,0 +1,43 @@
+.body-map {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.body-map-svg {
+  width: 130px;
+  flex-shrink: 0;
+}
+
+.body-map-svg rect,
+.body-map-svg circle {
+  transition: fill 0.15s ease;
+}
+
+.body-map-zones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  flex: 1;
+}
+
+.zone-chip {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.zone-chip:hover {
+  color: var(--text);
+}
+
+.zone-chip.selected {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}

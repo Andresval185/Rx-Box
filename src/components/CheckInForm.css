@@ -1,0 +1,121 @@
+.check-in-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.feeling-options {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.feeling-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  flex: 1;
+  min-width: 64px;
+}
+
+.feeling-emoji {
+  font-size: 22px;
+}
+
+.feeling-option:hover {
+  color: var(--text);
+}
+
+.feeling-option.selected {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+input[type='range'] {
+  width: 100%;
+  accent-color: var(--accent);
+}
+
+.soreness-scale {
+  display: flex;
+  gap: 8px;
+}
+
+.soreness-option {
+  flex: 1;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+.soreness-option:hover {
+  color: var(--text);
+}
+
+.soreness-option.selected {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.soreness-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+textarea {
+  width: 100%;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  padding: 10px 12px;
+  font-family: inherit;
+  font-size: 13px;
+  resize: vertical;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 4px;
+}
+
+.check-in-success {
+  text-align: center;
+  padding: 24px 0;
+}
+
+.check-in-success p {
+  color: var(--text-muted);
+  margin-top: 8px;
+}

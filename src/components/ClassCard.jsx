@@ -1,6 +1,14 @@
 import './ClassCard.css'
 
-export default function ClassCard({ classInfo, spotsTaken, isReserved, onReserve, onCancel }) {
+export default function ClassCard({
+  classInfo,
+  spotsTaken,
+  isReserved,
+  hasCheckedIn,
+  onReserve,
+  onCancel,
+  onCheckIn,
+}) {
   const spotsLeft = classInfo.capacity - spotsTaken
   const isFull = spotsLeft <= 0 && !isReserved
 
@@ -16,9 +24,18 @@ export default function ClassCard({ classInfo, spotsTaken, isReserved, onReserve
           {spotsLeft} / {classInfo.capacity} spots
         </span>
         {isReserved ? (
-          <button type="button" className="btn btn-outline" onClick={onCancel}>
-            Cancel
-          </button>
+          <>
+            {hasCheckedIn ? (
+              <span className="checked-in-badge">Checked In ✓</span>
+            ) : (
+              <button type="button" className="btn btn-accent" onClick={onCheckIn}>
+                Check In
+              </button>
+            )}
+            <button type="button" className="btn btn-outline" onClick={onCancel}>
+              Cancel
+            </button>
+          </>
         ) : (
           <button type="button" className="btn btn-accent" disabled={isFull} onClick={onReserve}>
             {isFull ? 'Full' : 'Reserve'}
