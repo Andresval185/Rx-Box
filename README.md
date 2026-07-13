@@ -1,16 +1,34 @@
-# React + Vite
+# RxBox
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+CrossFit box management platform — class reservations, athlete wellness
+check-ins, injury prevention alerts, and nutrition tracking, built for a
+class project.
 
-Currently, two official plugins are available:
+**Live:** https://andresval185.github.io/Rx-Box/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- **Class schedule & reservations** — Wodify-style weekly schedule with live spot counts.
+- **Athlete check-in** — feeling, sleep, soreness, body-map pain zones, and symptom notes, tied to each reservation.
+- **Coach dashboard** — traffic-light (green/yellow/red) wellness summary per class roster.
+- **Injury prevention alerts** — flags an athlete when the day's WOD stresses a body zone where they reported pain.
+- **Nutrition & performance** — compares training consistency against nutrition compliance to surface under-fueling patterns.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech stack
 
-## Expanding the Oxlint configuration
+React (Vite) single-page app, in-memory mock data (no backend), plain CSS.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Run locally
+
+```bash
+npm install
+npm run dev
+```
+
+## Deploy
+
+```bash
+npm run deploy
+```
+
+Builds the app and publishes `dist/` to the `gh-pages` branch.
