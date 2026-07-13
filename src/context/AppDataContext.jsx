@@ -1,11 +1,12 @@
 import { createContext, useContext, useState } from 'react'
 import { athletes, currentAthleteId } from '../data/athletes.js'
 import { classSchedule } from '../data/classes.js'
+import { seedReservations } from '../data/seedReservations.js'
 
 const AppDataContext = createContext(null)
 
 export function AppDataProvider({ children }) {
-  const [reservations, setReservations] = useState([])
+  const [reservations, setReservations] = useState(seedReservations)
 
   const currentAthlete = athletes.find((a) => a.id === currentAthleteId)
 

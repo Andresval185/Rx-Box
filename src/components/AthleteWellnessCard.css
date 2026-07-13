@@ -1,0 +1,122 @@
+.wellness-card {
+  display: flex;
+  gap: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.status-dot-green {
+  background: var(--green);
+}
+
+.status-dot-yellow {
+  background: var(--yellow);
+}
+
+.status-dot-red {
+  background: var(--red);
+  box-shadow: 0 0 0 3px rgba(255, 77, 77, 0.2);
+}
+
+.status-dot-pending {
+  background: var(--text-muted);
+}
+
+.wellness-card-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.wellness-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.wellness-card-header h4 {
+  font-size: 15px;
+}
+
+.status-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+.status-label-green {
+  background: rgba(62, 207, 110, 0.15);
+  color: var(--green);
+}
+
+.status-label-yellow {
+  background: rgba(245, 193, 75, 0.15);
+  color: var(--yellow);
+}
+
+.status-label-red {
+  background: rgba(255, 77, 77, 0.15);
+  color: var(--red);
+}
+
+.status-label-pending {
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+}
+
+.wellness-card-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  margin-top: 8px;
+  align-items: center;
+}
+
+.wellness-stat {
+  font-size: 13px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.wellness-pain-zones {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.pain-zone-chip {
+  background: rgba(255, 77, 77, 0.15);
+  color: var(--red);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 10px;
+}
+
+.wellness-note {
+  width: 100%;
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.wellness-pending {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--text-muted);
+}

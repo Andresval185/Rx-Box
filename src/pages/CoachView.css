@@ -1,0 +1,71 @@
+.coach-view-subtitle {
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+.summary-bar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 16px 0 24px;
+}
+
+.summary-chip {
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 20px;
+}
+
+.summary-chip-red {
+  background: rgba(255, 77, 77, 0.15);
+  color: var(--red);
+}
+
+.summary-chip-yellow {
+  background: rgba(245, 193, 75, 0.15);
+  color: var(--yellow);
+}
+
+.summary-chip-green {
+  background: rgba(62, 207, 110, 0.15);
+  color: var(--green);
+}
+
+.summary-chip-pending {
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+}
+
+.coach-class-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.coach-class-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.coach-class-heading h2 {
+  font-size: 17px;
+}
+
+.coach-class-coach {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.coach-empty-roster {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.wellness-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
