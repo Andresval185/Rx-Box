@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react'
 import { useAppData } from '../context/AppDataContext.jsx'
 import { days } from '../data/classes.js'
-import { getWellnessStatus } from '../utils/wellness.js'
+import { getWellnessStatus, getInjuryAlertZones } from '../utils/wellness.js'
 import AthleteWellnessCard from '../components/AthleteWellnessCard.jsx'
 import './CoachView.css'
 
@@ -10,17 +10,19 @@ export default function CoachView() {
   const { classes, reservations, athletes } = useAppData()
 
   const classesForDay = classes.filter((c) => c.day === activeDay)
+  const classesById = useMemo(() => new Map(classesForDay.map((c) => [c.id, c])), [classesForDay])
 
   const dayStatusCounts = useMemo(() => {
-    const classIds = new Set(classesForDay.map((c) => c.id))
-    const counts = { green: 0, yellow: 0, red: 0, pending: 0 }
-    reservations
-      .filter((r) => classIds.has(r.classId))
-      .forEach((r) => {
-        counts[getWellnessStatus(r.checkIn)] += 1
-      })
+    const relevant = reservations.filter((r) => classesById.has(r.classId))
+    const counts = { green: 0, yellow: 0, red: 0, pending: 0, injuryAlerts: 0 }
+    relevant.forEach((r) => {
+      counts[getWellnessStatus(r.checkIn)] += 1
+      if (getInjuryAlertZones(r.checkIn, classesById.get(r.classId)).length > 0) {
+        counts.injuryAlerts += 1
+      }
+    })
     return counts
-  }, [classesForDay, reservations])
+  }, [classesById, reservations])
 
   return (
     <div>
@@ -41,6 +43,11 @@ export default function CoachView() {
       </div>
 
       <div className="summary-bar">
+        {dayStatusCounts.injuryAlerts > 0 && (
+          <span className="summary-chip summary-chip-alert">
+            ⚠️ {dayStatusCounts.injuryAlerts} injury alert{dayStatusCounts.injuryAlerts > 1 ? 's' : ''}
+          </span>
+        )}
         <span className="summary-chip summary-chip-red">{dayStatusCounts.red} needs attention</span>
         <span className="summary-chip summary-chip-yellow">{dayStatusCounts.yellow} monitor</span>
         <span className="summary-chip summary-chip-green">{dayStatusCounts.green} ready</span>
@@ -70,6 +77,7 @@ export default function CoachView() {
                         key={r.id}
                         athleteName={athlete?.name ?? 'Unknown athlete'}
                         checkIn={r.checkIn}
+                        classInfo={classInfo}
                       />
                     )
                   })}

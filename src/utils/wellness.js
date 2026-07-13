@@ -20,3 +20,10 @@ export const wellnessStatusLabel = {
   red: 'Needs attention',
   pending: 'Not checked in',
 }
+
+// Zones where the athlete flagged pain AND today's WOD loads that same
+// zone — this is the injury-prevention signal the coach dashboard alerts on.
+export function getInjuryAlertZones(checkIn, classInfo) {
+  if (!checkIn || !checkIn.painZones.length || !classInfo?.targetZones) return []
+  return checkIn.painZones.filter((zone) => classInfo.targetZones.includes(zone))
+}

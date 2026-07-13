@@ -17,6 +17,11 @@
   border-radius: 20px;
 }
 
+.summary-chip-alert {
+  background: var(--red);
+  color: #fff;
+}
+
 .summary-chip-red {
   background: rgba(255, 77, 77, 0.15);
   color: var(--red);

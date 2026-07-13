@@ -29,8 +29,8 @@ export const seedReservations = [
     },
   },
   {
-    id: 'c1-a4',
-    classId: 'c1',
+    id: 'c2-a4',
+    classId: 'c2',
     athleteId: 'a4',
     checkIn: {
       feeling: 'rough',

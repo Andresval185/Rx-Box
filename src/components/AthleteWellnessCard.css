@@ -32,6 +32,22 @@
   background: var(--text-muted);
 }
 
+.wellness-card.has-injury-alert {
+  border-color: var(--red);
+  box-shadow: 0 0 0 1px var(--red);
+}
+
+.injury-alert {
+  margin-top: 8px;
+  background: rgba(255, 77, 77, 0.12);
+  border: 1px solid rgba(255, 77, 77, 0.4);
+  color: var(--red);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 10px;
+  border-radius: 6px;
+}
+
 .wellness-card-main {
   flex: 1;
   min-width: 0;
