@@ -11,9 +11,18 @@
 }
 
 .navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-size: 20px;
   font-weight: 800;
   letter-spacing: -0.5px;
+}
+
+.navbar-logo {
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
 }
 
 .navbar-brand span {

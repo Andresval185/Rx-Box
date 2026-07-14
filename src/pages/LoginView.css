@@ -4,6 +4,13 @@
   text-align: center;
 }
 
+.login-logo {
+  width: 88px;
+  height: 88px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+
 .login-view h1 {
   font-size: 32px;
   font-weight: 800;

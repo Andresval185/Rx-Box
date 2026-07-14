@@ -1,5 +1,6 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useAppData } from '../context/AppDataContext.jsx'
+import logo from '../assets/logo.png'
 import './NavBar.css'
 
 export default function NavBar() {
@@ -14,6 +15,7 @@ export default function NavBar() {
   return (
     <header className="navbar">
       <div className="navbar-brand">
+        <img src={logo} alt="RxBox" className="navbar-logo" />
         Rx<span>Box</span>
       </div>
       {session && (

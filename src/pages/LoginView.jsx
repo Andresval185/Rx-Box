@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useAppData } from '../context/AppDataContext.jsx'
+import logo from '../assets/logo.png'
 import './LoginView.css'
 
 export default function LoginView() {
@@ -18,6 +19,7 @@ export default function LoginView() {
 
   return (
     <div className="login-view">
+      <img src={logo} alt="RxBox" className="login-logo" />
       <h1>
         Rx<span>Box</span>
       </h1>
