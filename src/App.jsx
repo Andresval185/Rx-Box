@@ -1,6 +1,8 @@
-import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import { AppDataProvider } from './context/AppDataContext.jsx'
 import NavBar from './components/NavBar.jsx'
+import ProtectedRoute from './components/ProtectedRoute.jsx'
+import LoginView from './pages/LoginView.jsx'
 import AthleteView from './pages/AthleteView.jsx'
 import CoachView from './pages/CoachView.jsx'
 import NutritionView from './pages/NutritionView.jsx'
@@ -13,10 +15,31 @@ function App() {
           <NavBar />
           <main className="app-main">
             <Routes>
-              <Route path="/" element={<Navigate to="/athlete" replace />} />
-              <Route path="/athlete" element={<AthleteView />} />
-              <Route path="/coach" element={<CoachView />} />
-              <Route path="/nutrition" element={<NutritionView />} />
+              <Route path="/" element={<LoginView />} />
+              <Route
+                path="/athlete"
+                element={
+                  <ProtectedRoute role="athlete">
+                    <AthleteView />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/coach"
+                element={
+                  <ProtectedRoute role="coach">
+                    <CoachView />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/nutrition"
+                element={
+                  <ProtectedRoute role="coach">
+                    <NutritionView />
+                  </ProtectedRoute>
+                }
+              />
             </Routes>
           </main>
         </div>

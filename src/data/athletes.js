@@ -4,6 +4,3 @@ export const athletes = [
   { id: 'a3', name: 'Casey Nguyen' },
   { id: 'a4', name: 'Priya Patel' },
 ]
-
-// No login flow yet — the athlete view acts on behalf of this athlete.
-export const currentAthleteId = 'a1'

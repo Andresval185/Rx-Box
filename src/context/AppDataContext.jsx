@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from 'react'
-import { athletes, currentAthleteId } from '../data/athletes.js'
+import { athletes } from '../data/athletes.js'
 import { classSchedule } from '../data/classes.js'
 import { seedReservations } from '../data/seedReservations.js'
 
@@ -7,28 +7,47 @@ const AppDataContext = createContext(null)
 
 export function AppDataProvider({ children }) {
   const [reservations, setReservations] = useState(seedReservations)
+  // session: null (logged out) | { role: 'athlete', athleteId } | { role: 'coach' }
+  const [session, setSession] = useState(null)
 
-  const currentAthlete = athletes.find((a) => a.id === currentAthleteId)
+  const currentAthlete =
+    session?.role === 'athlete' ? athletes.find((a) => a.id === session.athleteId) : null
+
+  function loginAsAthlete(athleteId) {
+    setSession({ role: 'athlete', athleteId })
+  }
+
+  function loginAsCoach() {
+    setSession({ role: 'coach' })
+  }
+
+  function logout() {
+    setSession(null)
+  }
 
   function reserveClass(classId) {
+    const athleteId = session?.athleteId
+    if (!athleteId) return
     setReservations((prev) => {
-      if (prev.some((r) => r.classId === classId && r.athleteId === currentAthleteId)) {
+      if (prev.some((r) => r.classId === classId && r.athleteId === athleteId)) {
         return prev
       }
-      return [...prev, { id: `${classId}-${currentAthleteId}`, classId, athleteId: currentAthleteId, checkIn: null }]
+      return [...prev, { id: `${classId}-${athleteId}`, classId, athleteId, checkIn: null }]
     })
   }
 
   function cancelReservation(classId) {
-    setReservations((prev) =>
-      prev.filter((r) => !(r.classId === classId && r.athleteId === currentAthleteId)),
-    )
+    const athleteId = session?.athleteId
+    if (!athleteId) return
+    setReservations((prev) => prev.filter((r) => !(r.classId === classId && r.athleteId === athleteId)))
   }
 
   function submitCheckIn(classId, checkInData) {
+    const athleteId = session?.athleteId
+    if (!athleteId) return
     setReservations((prev) =>
       prev.map((r) =>
-        r.classId === classId && r.athleteId === currentAthleteId
+        r.classId === classId && r.athleteId === athleteId
           ? { ...r, checkIn: { ...checkInData, submittedAt: new Date().toISOString() } }
           : r,
       ),
@@ -37,7 +56,11 @@ export function AppDataProvider({ children }) {
 
   const value = {
     athletes,
+    session,
     currentAthlete,
+    loginAsAthlete,
+    loginAsCoach,
+    logout,
     classes: classSchedule,
     reservations,
     reserveClass,

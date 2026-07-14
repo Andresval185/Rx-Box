@@ -41,3 +41,30 @@
   background: var(--accent);
   color: #fff;
 }
+
+.navbar-session {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbar-session-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.navbar-logout {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.navbar-logout:hover {
+  border-color: var(--red);
+  color: var(--red);
+}
